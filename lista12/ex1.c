@@ -23,6 +23,7 @@ int main()
 	scanf("%d", &totalSegundos);
 	
 	// chamada da função
+	// &h &m &s -> endereço de memoria das variáveis h m s
 	segundosParaHMS(totalSegundos, &h, &m, &s);
 
 	printf("%02d:%02d:%02d\n", h, m, s);
