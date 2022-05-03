@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+// macro para definir o tamanho do vetor
 #define N 100
 
 int main()
@@ -12,7 +13,7 @@ int main()
 	srand(time(NULL));
 
 
-	// gerar N valores aleatórios
+	// atribuindo N valores aleatórios ao vetor
 	for(i=0 ; i<N ; i++)
 	{
 		vetor[i] = rand()%60 + 20;
@@ -20,11 +21,13 @@ int main()
 		printf("vetor[%d]:%d\n",i ,vetor[i]);
 	}
 
-	// calcular e imprimir a média
+	// somando todos os valores do vetor
 	for(i=0 ; i<N ; i++)
 	{
 		soma+=vetor[i];
 	}
+
+	//caldulando média e imprimindo
 	printf("soma: %d\n", soma);
 	printf("media:%.2f", (float)soma/N);
 
