@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 // limite do vetor
-#define N 80 
+#define N 81 
 
 int main()
 {
