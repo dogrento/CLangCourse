@@ -8,8 +8,8 @@
 
 /*===========================================================================*/
 
-#define FILENAME "teste1.txt"
-#define CLEAR "cls" // Mude para "clear" no Linux.
+#define FILENAME "teste4.txt"
+#define CLEAR "clear" // Mude para "clear" no Linux.
 
 #define BUFLEN 1024 // Altura/largura máxima do labirinto + 2
 
@@ -46,9 +46,14 @@ int main ()
         return 1;
     }
 
+    imprimeMatriz (lab, w, h);
+    mostraLabirinto (lab, w, h, rato_x, rato_y, queijo_x, queijo_y);
+
     preencheMatrizCusto (lab, w, h, queijo_x, queijo_y);
+    imprimeMatriz (lab, w, h);
     tam = calculaCaminho (lab, w, h, rato_x, rato_y, &caminho_x, &caminho_y);
     mostraCaminho (lab, w, h, queijo_x, queijo_y, caminho_x, caminho_y, tam);
+    printf("cheguei aqui\n");
 
     // Desaloca tudo.
     for (i = 0; i < h; i++)
@@ -186,6 +191,96 @@ void mostraLabirinto (int** lab, int w, int h, int x_rato, int y_rato, int x_que
 void preencheMatrizCusto (int** m, int w, int h, int x_queijo, int y_queijo)
 {
     // TODO: escreva esta função!
+    int i,j;
+    int passos=0;
+    int cima = y_queijo + 1,
+        baixo = y_queijo - 1,
+	direita = x_queijo + 1,
+	esquerda = x_queijo-1;	
+
+    printf("x: %d, y: %d\n", x_queijo, y_queijo);
+    m[y_queijo][x_queijo] = 0;
+
+    i = y_queijo;
+    j = x_queijo;
+    while(m[i][j]!=-2)
+    {
+	    printf("matriz[%d][%d]: %d\n", i, j, m[i][j]);
+	    m[i][j] = passos;
+	    printf("matriz[%d][%d]: %d\n\n", i, j, m[i][j]);
+	    printf("matriz da esquerda: %d\n", m[i][esquerda]);
+		
+	    if(m[i][esquerda]==-1)
+	    {
+	        printf("entrei nessa porra\n");
+		while(m[i][esquerda]==-1)
+		{
+			passos = m[i][j]+1;
+			printf("matriz dessa merda : %d\n",m[i][esquerda]);
+			m[i][esquerda] =passos;
+			esquerda--;
+		}
+	    }
+	    passos = m[i][j] + 1;
+	    printf("passos = %d\n", passos);
+
+	    i--;
+    }
+
+    //for(i=cima; m[i][cima]==-1;i++)
+    //{
+    //        passos = m[i-1][] + 1;
+    //	    m[i][caminhoX] = passos;
+    //}
+    //
+    //for(i=caminhoY-1; m[i][caminhoX]==-1; i--)
+    //{
+    //        passos = m[i+1][caminhoX] + 1;
+    //        m[i][caminhoX] = passos;
+    //}
+
+    //for(j=caminhoX+1; m[caminhoY][j]==-1;j++)
+    //{
+    //	passos = m[caminhoY][j-1] + 1;
+    //    m[caminhoY][j] = passos;	
+    //}
+
+    //for(j=caminhoX-1; m[caminhoY][j]==-1; j--)
+    //{
+    //	passos = m[caminhoY][j+1] + 1;
+    //    m[caminhoY][j] = passos;
+    //}
+
+    
+    
+
+
+   // for(i=caminhoY+1; m[i+1][caminhoY]=-1; i++)
+   // {
+   //     m[i][j]=passos++;
+   // }
+   // caminhoY=i;
+   // passos=1;
+
+		    //for(i=i; m[i][j]=-1;i--)
+    //{
+    //    m[i][j]=passos++;
+    //}
+    //caminhoY=i;
+    //passos=1;
+
+    //for(j;m[i][j]=-1;j--)
+    //{
+    //    m[i][j]=passos++;
+    //}
+    //caminhoX=j;
+    //passos=1;
+
+    //for(j;m[i][j]=-1;j++)
+    //{
+    //    m[i][j]=passos++;
+    //}
+    //caminhoX=j;
 }
 
 /*---------------------------------------------------------------------------*/
