@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <string.h>
+
+#define ANO 12
+
+typedef struct{
+	int valor,
+	    dia;
+	char nome[3];
+	
+}Mes;
+
+int main(){
+
+	Mes vetor[ANO];
+	int i;
+	
+	for(i=0; i<ANO; i++){
+		vetor[i].valor = i+1;
+		printf("mes: %d\n", vetor[i].valor);
+	}
+
+	strcpy(vetor[0].nome, "JAN");
+	printf("%s\n", vetor[0].nome);
+
+	return 0;
+
+}
