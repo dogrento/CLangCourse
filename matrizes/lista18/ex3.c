@@ -33,15 +33,6 @@ int main()
 		output[i] = (char*) malloc((N*2) * sizeof(char));
 	}
 
-	for(i=0; i<N*2; i++){
-		puts("\n");
-		for(j=0; j<N*2; j++)
-		{
-			output[i][j] = 'o';
-			printf("%c\t", output[i][j]);
-		}
-	}
-
 	puts("\n");
 
 	for(i=0; i<N; i++){
